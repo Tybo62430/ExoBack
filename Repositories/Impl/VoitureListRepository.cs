@@ -24,24 +24,24 @@ namespace ExoBack.Repositories.Impl
             return this.voitures.Where(v => v != null);
         }
 
-        public Voiture FindById(int id)
+        public IEnumerable<Voiture> FindById(int id)
         {
-            return this.voitures[id];
+            return voitures.Where(v => v.Id == id);
         }
 
-        public Voiture FindByImmatriculation(int imatriculation)
+        public IEnumerable<Voiture> FindByImmatriculation(string imatriculation)
         {
-            return this.voitures[imatriculation];
+            return voitures.Where(v => v.Imatriculation == imatriculation);
         }
 
-        public Voiture FindByMarque(int marque)
+        public IEnumerable<Voiture> FindByMarque(string marque)
         {
-            return this.voitures[marque];
+            return voitures.Where(v => v.Marque == marque);
         }
 
-        public Voiture FindByNom(int nom)
+        public IEnumerable<Voiture> FindByNom(string nom)
         {
-            return this.voitures[nom];
+            return voitures.Where(v => v.Nom == nom);
         }
 
         public Voiture Save(Voiture car)

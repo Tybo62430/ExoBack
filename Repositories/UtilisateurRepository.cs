@@ -10,10 +10,10 @@ namespace ExoBack.Repositories
     {
         public Utilisateur Save(Utilisateur user);
         public IEnumerable<Utilisateur> FindAll();
-        public Utilisateur FindById(int id);
-        public Utilisateur FindByNom(int nom);
-        public Utilisateur FindByPrenom(int prenom);
-        public Utilisateur FindByAge(int age);
+        public IEnumerable<Utilisateur> FindById(int id);
+        public IEnumerable<Utilisateur> FindByNom(string nom);
+        public IEnumerable<Utilisateur> FindByPrenom(string prenom);
+        public IEnumerable<Utilisateur> FindByAge(int age);
         public Utilisateur Update(Utilisateur user);
         public void Delete(int id);
         public void Delete(Utilisateur user);

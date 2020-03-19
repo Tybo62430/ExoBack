@@ -24,24 +24,24 @@ namespace ExoBack.Repositories.Impl
             return this.Utilisateurs.Where(u => u != null);
         }
 
-        public Utilisateur FindByAge(int age)
+        public IEnumerable<Utilisateur> FindByAge(int age)
         {
-            return this.Utilisateurs[age];
+            return Utilisateurs.Where(u => u.Age == age);
         }
 
-        public Utilisateur FindById(int id)
+        public IEnumerable<Utilisateur> FindById(int id)
         {
-            return this.Utilisateurs[id];
+            return Utilisateurs.Where(u => u.Id == id);
         }
 
-        public Utilisateur FindByNom(int nom)
+        public IEnumerable<Utilisateur> FindByNom(string nom)
         {
-            return this.Utilisateurs[nom];
+            return Utilisateurs.Where(u => u.Nom == nom);
         }
 
-        public Utilisateur FindByPrenom(int prenom)
+        public IEnumerable<Utilisateur> FindByPrenom(string prenom)
         {
-            return this.Utilisateurs[prenom];
+            return Utilisateurs.Where(u => u.Prenom == prenom);
         }
 
         public Utilisateur Save(Utilisateur user)
