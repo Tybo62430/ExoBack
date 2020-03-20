@@ -61,7 +61,8 @@ namespace ExoBack.Repositories.Impl
         }
 
         public Voiture Update(Voiture car)
-        {            
+        {
+            car.Proprietaire = utilisateurService.TrouverParId(car.Proprietaire.Id);
             this.voitures[car.Id] = car;
             return car;
         }
