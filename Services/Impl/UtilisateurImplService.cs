@@ -35,7 +35,7 @@ namespace ExoBack.Services.Impl
             return this.repository.FindByAge(age);
         }
 
-        public IEnumerable<Utilisateur> TrouverParId(int id)
+        public Utilisateur TrouverParId(int id)
         {
             return this.repository.FindById(id);
         }

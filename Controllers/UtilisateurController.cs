@@ -37,7 +37,7 @@ namespace ExoBack.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IEnumerable<Utilisateur> FindById(int id)
+        public Utilisateur FindById(int id)
         {
             return this.service.TrouverParId(id);
         }

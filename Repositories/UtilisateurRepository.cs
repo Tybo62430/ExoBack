@@ -10,7 +10,7 @@ namespace ExoBack.Repositories
     {
         public Utilisateur Save(Utilisateur user);
         public IEnumerable<Utilisateur> FindAll();
-        public IEnumerable<Utilisateur> FindById(int id);
+        public Utilisateur FindById(int id);
         public IEnumerable<Utilisateur> FindByNom(string nom);
         public IEnumerable<Utilisateur> FindByPrenom(string prenom);
         public IEnumerable<Utilisateur> FindByAge(int age);

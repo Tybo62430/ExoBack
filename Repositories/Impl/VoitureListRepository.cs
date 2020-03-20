@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace ExoBack.Repositories.Impl
 {
+    using Services;
     public class VoitureListRepository : VoitureRepository
     {
         private List<Voiture> voitures = new List<Voiture>();
+
+        private UtilisateurService utilisateurService;
+
+        public VoitureListRepository(UtilisateurService service)
+        {
+            this.utilisateurService = service;
+        }
         public void Delete(int id)
         {
             this.voitures[id] = null;
@@ -47,6 +55,7 @@ namespace ExoBack.Repositories.Impl
         public Voiture Save(Voiture car)
         {
             car.Id = this.voitures.Count();
+            car.Proprietaire = utilisateurService.TrouverParId(car.Proprietaire.Id);
             this.voitures.Add(car);
             return car;            
         }

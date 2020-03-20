@@ -9,7 +9,7 @@ namespace ExoBack.Services
     public interface UtilisateurService
     {
         public IEnumerable<Utilisateur> TrouverTous();
-        public IEnumerable<Utilisateur> TrouverParId(int id);
+        public Utilisateur TrouverParId(int id);
         public IEnumerable<Utilisateur> TrouverParNom(string nom);
         public IEnumerable<Utilisateur> TrouverParPrenom(string prenom);
         public IEnumerable<Utilisateur> TrouverParAge(int age);

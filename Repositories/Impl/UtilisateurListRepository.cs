@@ -29,9 +29,9 @@ namespace ExoBack.Repositories.Impl
             return Utilisateurs.Where(u => u.Age == age);
         }
 
-        public IEnumerable<Utilisateur> FindById(int id)
+        public Utilisateur FindById(int id)
         {
-            return Utilisateurs.Where(u => u.Id == id);
+            return Utilisateurs[id]; 
         }
 
         public IEnumerable<Utilisateur> FindByNom(string nom)
