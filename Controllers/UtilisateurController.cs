@@ -36,28 +36,28 @@ namespace ExoBack.Controllers
         }
 
         [HttpGet]
-        [Route("id")]
+        [Route("{id}")]
         public IEnumerable<Utilisateur> FindById(int id)
         {
             return this.service.TrouverParId(id);
         }
 
         [HttpGet]
-        [Route("nom")]
+        [Route("nom/{nom}")]
         public IEnumerable<Utilisateur> FindByNom(string nom)
         {
             return this.service.TrouverParNom(nom);
         }
 
         [HttpGet]
-        [Route("prenom")]
+        [Route("prenom/{prenom}")]
         public IEnumerable<Utilisateur> FindByPrenom(string prenom)
         {
             return this.service.TrouverParPrenom(prenom);
         }
 
         [HttpGet]
-        [Route("age")]
+        [Route("age/{age}")]
         public IEnumerable<Utilisateur> FindByAge(int age)
         {
             return this.service.TrouverParAge(age);
@@ -71,7 +71,7 @@ namespace ExoBack.Controllers
         }
 
         [HttpDelete]
-        [Route("")]
+        [Route("{id}")]
         public void Delete(int id)
         {
             this.service.Supprimer(id);            
