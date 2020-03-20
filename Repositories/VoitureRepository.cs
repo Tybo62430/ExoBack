@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace ExoBack.Repositories
 {
     using Models;
-    interface VoitureRepository
+    public interface VoitureRepository
     {
         public Voiture Save(Voiture car);
         public IEnumerable<Voiture> FindAll();
