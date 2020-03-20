@@ -66,7 +66,7 @@ namespace ExoBack.Controllers
 
         [HttpGet]
         [Route("imatriculation/{imatriculation}")]
-        public IEnumerable<Voiture> FindByImatriculation(string imatriculation)
+        public Voiture FindByImatriculation(string imatriculation)
         {
             return this.service.TrouverParImatriculation(imatriculation);
         }

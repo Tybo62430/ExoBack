@@ -37,9 +37,17 @@ namespace ExoBack.Repositories.Impl
             return voitures[id];
         }
 
-        public IEnumerable<Voiture> FindByImmatriculation(string imatriculation)
+        public Voiture FindByImmatriculation(string imatriculation)
         {
-            return voitures.Where(v => v.Imatriculation == imatriculation);
+            Voiture car = null;
+            foreach (var voiture in voitures)
+            {
+                if(voiture.Imatriculation == imatriculation)
+                {
+                    car = voiture;
+                }                
+            }
+            return car;
         }
 
         public IEnumerable<Voiture> FindByMarque(string marque)

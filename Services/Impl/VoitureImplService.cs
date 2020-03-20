@@ -36,7 +36,7 @@ namespace ExoBack.Services.Impl
             return this.repository.FindById(id);
         }
 
-        public IEnumerable<Voiture> TrouverParImatriculation(string imatriculation)
+        public Voiture TrouverParImatriculation(string imatriculation)
         {
             return this.repository.FindByImmatriculation(imatriculation);
         }
