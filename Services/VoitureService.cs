@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace ExoBack.Services
 {
     using Models;
-    interface VoitureService
+    public interface VoitureService
     {
         public IEnumerable<Voiture> TrouverTous();
         public IEnumerable<Voiture> TrouverParId(int id);
