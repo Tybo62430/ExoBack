@@ -15,6 +15,8 @@ namespace ExoBack
 {
     using Repositories;
     using Repositories.Impl;
+    using Services;
+    using Services.Impl;
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -27,8 +29,12 @@ namespace ExoBack
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<UtilisateurService, UtilisateurImplService>();
             services.AddSingleton<UtilisateurRepository, UtilisateurListRepository>();
+
+            services.AddSingleton<VoitureService, VoitureImplService>();
             services.AddSingleton<VoitureRepository, VoitureListRepository>();
+
             services.AddControllers();
         }
 
