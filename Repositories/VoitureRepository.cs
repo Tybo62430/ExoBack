@@ -10,7 +10,7 @@ namespace ExoBack.Repositories
     {
         public Voiture Save(Voiture car);
         public IEnumerable<Voiture> FindAll();
-        public IEnumerable<Voiture> FindById(int id);
+        public Voiture FindById(int id);
         public IEnumerable<Voiture> FindByNom(string nom);
         public IEnumerable<Voiture> FindByMarque(string marque);
         public IEnumerable<Voiture> FindByImmatriculation(string imatriculation);

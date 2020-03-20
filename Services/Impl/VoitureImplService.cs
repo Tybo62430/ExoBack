@@ -31,7 +31,7 @@ namespace ExoBack.Services.Impl
             this.repository.Delete(id);
         }
 
-        public IEnumerable<Voiture> TrouverParId(int id)
+        public Voiture TrouverParId(int id)
         {
             return this.repository.FindById(id);
         }

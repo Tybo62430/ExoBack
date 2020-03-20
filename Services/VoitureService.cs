@@ -9,7 +9,7 @@ namespace ExoBack.Services
     public interface VoitureService
     {
         public IEnumerable<Voiture> TrouverTous();
-        public IEnumerable<Voiture> TrouverParId(int id);
+        public Voiture TrouverParId(int id);
         public IEnumerable<Voiture> TrouverParNom(string nom);
         public IEnumerable<Voiture> TrouverParMarque(string marque);
         public IEnumerable<Voiture> TrouverParImatriculation(string imatriculation);

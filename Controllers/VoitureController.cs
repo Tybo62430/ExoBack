@@ -37,9 +37,17 @@ namespace ExoBack.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IEnumerable<Voiture> FindById(int id)
+        public IActionResult FindById(int id)
         {
-            return this.service.TrouverParId(id);
+            try
+            {               
+                return Ok(this.service.TrouverParId(id));
+            }
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
+            
         }
 
         [HttpGet]

@@ -32,9 +32,9 @@ namespace ExoBack.Repositories.Impl
             return this.voitures.Where(v => v != null);
         }
 
-        public IEnumerable<Voiture> FindById(int id)
+        public Voiture FindById(int id)
         {
-            return voitures.Where(v => v.Id == id);
+            return voitures[id];
         }
 
         public IEnumerable<Voiture> FindByImmatriculation(string imatriculation)
