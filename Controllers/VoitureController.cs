@@ -23,16 +23,16 @@ namespace ExoBack.Controllers
 
         [HttpPost]
         [Route("")]
-        public Voiture Save([FromBody] Voiture car)
+        public IActionResult Save([FromBody] Voiture car)
         {
-            return this.service.Save(car);
+            return Ok(this.service.Save(car));
         }
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<Voiture> FindAll()
+        public IActionResult FindAll()
         {
-            return this.service.TrouverTous();
+            return Ok(this.service.TrouverTous());
         }
 
         [HttpGet]
@@ -43,46 +43,91 @@ namespace ExoBack.Controllers
             {               
                 return Ok(this.service.TrouverParId(id));
             }
-            catch(Exception e)
+            catch (IndexOutOfRangeException e)
             {
                 return NotFound(e.Message);
             }
-            
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
+
         }
 
         [HttpGet]
         [Route("nom/{nom}")]
-        public IEnumerable<Voiture> FindByNom(string nom)
-        {
-            return this.service.TrouverParNom(nom);
+        public IActionResult FindByNom(string nom)
+        {            
+            try
+            {
+                return Ok(this.service.TrouverParNom(nom));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpGet]
         [Route("marque/{marque}")]
-        public IEnumerable<Voiture> FindByPrenom(string marque)
-        {
-            return this.service.TrouverParMarque(marque);
+        public IActionResult FindByPrenom(string marque)
+        {            
+            try
+            {
+                return Ok(this.service.TrouverParMarque(marque));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpGet]
         [Route("imatriculation/{imatriculation}")]
-        public Voiture FindByImatriculation(string imatriculation)
-        {
-            return this.service.TrouverParImatriculation(imatriculation);
+        public IActionResult FindByImatriculation(string imatriculation)
+        {            
+            try
+            {
+                return Ok(this.service.TrouverParImatriculation(imatriculation));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpPut]
         [Route("")]
-        public Voiture Update([FromBody] Voiture car)
+        public IActionResult Update([FromBody] Voiture car)
         {
-            return this.service.Modifier(car);
+            return Ok(this.service.Modifier(car));
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            this.service.Supprimer(id);
+            try
+            {
+                this.service.Supprimer(id);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }            
         }
     }
 }

@@ -23,58 +23,110 @@ namespace ExoBack.Controllers
 
         [HttpPost]
         [Route("")]
-        public Utilisateur Save([FromBody] Utilisateur user)
+        public IActionResult Save([FromBody] Utilisateur user)
         {
-            return this.service.Save(user);            
+            return Ok(this.service.Save(user));            
         }
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<Utilisateur> FindAll()
+        public IActionResult FindAll()
         {
-            return this.service.TrouverTous();            
+            return Ok(this.service.TrouverTous());            
         }
 
         [HttpGet]
         [Route("{id}")]
-        public Utilisateur FindById(int id)
+        public IActionResult FindById(int id)
         {
-            return this.service.TrouverParId(id);
+            try
+            {
+                return Ok(this.service.TrouverParId(id));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpGet]
         [Route("nom/{nom}")]
-        public IEnumerable<Utilisateur> FindByNom(string nom)
-        {
-            return this.service.TrouverParNom(nom);
+        public IActionResult FindByNom(string nom)
+        {            
+            try
+            {
+                return Ok(this.service.TrouverParNom(nom));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpGet]
         [Route("prenom/{prenom}")]
-        public IEnumerable<Utilisateur> FindByPrenom(string prenom)
-        {
-            return this.service.TrouverParPrenom(prenom);
+        public IActionResult FindByPrenom(string prenom)
+        {            
+            try
+            {
+                return Ok(this.service.TrouverParPrenom(prenom));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpGet]
         [Route("age/{age}")]
-        public IEnumerable<Utilisateur> FindByAge(int age)
-        {
-            return this.service.TrouverParAge(age);
+        public IActionResult FindByAge(int age)
+        {            
+            try
+            {
+                return Ok(this.service.TrouverParAge(age));
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return this.ValidationProblem(e.Message);
+            }
         }
 
         [HttpPut]
         [Route("")]
-        public Utilisateur Update([FromBody] Utilisateur user)
+        public IActionResult Update([FromBody] Utilisateur user)
         {
-            return this.service.Modifier(user);            
+            return Ok(this.service.Modifier(user));            
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public void Delete(int id)
-        {
-            this.service.Supprimer(id);            
+        public IActionResult Delete(int id)
+        {            
+            try
+            {
+                this.service.Supprimer(id);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound();
+            }
         }
     }
 }
