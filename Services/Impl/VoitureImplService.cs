@@ -10,10 +10,12 @@ namespace ExoBack.Services.Impl
     public class VoitureImplService : VoitureService
     {
         private VoitureRepository repository;
+        private UtilisateurService utilisateurService;
 
-        public VoitureImplService(VoitureRepository repository)
+        public VoitureImplService(VoitureRepository repository, UtilisateurService utilisateurService)
         {
             this.repository = repository;
+            this.utilisateurService = utilisateurService;
         }
 
         public Voiture Modifier(Voiture car)
@@ -23,7 +25,8 @@ namespace ExoBack.Services.Impl
 
         public Voiture Save(Voiture car)
         {
-            return this.repository.Save(car);
+            Utilisateur u = this.utilisateurService.TrouverParId(car.Proprietaire.Id);
+            return u.Age >= 18 ? this.repository.Save(car) : null ; //controle age user, ajout si > 18
         }
 
         public void Supprimer(int id)
